@@ -1,6 +1,6 @@
 import { getAuthHeader } from "@/lib/auth";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export interface Task {
   id: number;
@@ -98,18 +98,27 @@ export class TaskService {
 
   static async updateTask(id: number, data: UpdateTaskData): Promise<Task> {
     try {
+      console.log(`Atualizando tarefa ${id} com dados:`, data);
+      console.log(`URL: ${API_URL}/api/tasks/${id}`);
+      console.log(`Headers:`, this.getHeaders());
+      
       const response = await fetch(`${API_URL}/api/tasks/${id}`, {
         method: 'PUT',
         headers: this.getHeaders(),
         body: JSON.stringify(data),
       });
 
+      console.log(`Resposta recebida:`, response.status, response.statusText);
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
+        console.error('Erro na resposta:', errorData);
         throw new Error(errorData.detail || `Erro ao atualizar tarefa: ${response.status}`);
       }
 
-      return await response.json();
+      const result = await response.json();
+      console.log('Tarefa atualizada com sucesso:', result);
+      return result;
     } catch (error) {
       console.error('Erro ao atualizar tarefa:', error);
       throw error;

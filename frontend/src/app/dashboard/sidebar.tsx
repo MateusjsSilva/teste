@@ -22,7 +22,7 @@ export default function Sidebar() {
             </div>
             <button
                 onClick={handleLogout}
-                className="mt-6 w-full rounded-xl bg-white/20 px-4 py-3 text-center text-base font-medium text-white hover:bg-white/25 focus:outline-none">
+                className="mt-6 w-full rounded-xl bg-white/20 px-4 py-3 text-center text-base font-medium text-white hover:bg-white/25 focus:outline-none cursor-pointer">
                 Sair
             </button>
         </div>

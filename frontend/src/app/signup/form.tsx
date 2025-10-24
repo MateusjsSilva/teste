@@ -45,7 +45,7 @@ export function FormSignUp() {
     });
 
     const onSubmit = (data: SignUpForm) => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
         return fetch(`${apiUrl}/api/auth/register`, {
             method: "POST",
@@ -199,7 +199,7 @@ export function FormSignUp() {
                 </p>
                 <Link
                     href="/login"
-                    className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900/30"
+                    className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900/30 cursor-pointer"
                 >
                     Entrar
                 </Link>

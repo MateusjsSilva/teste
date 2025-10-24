@@ -34,7 +34,7 @@ export function FormSignIn() {
     });
 
     const onSubmit = (data: SignInForm) => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
         return fetch(`${apiUrl}/api/auth/login`, {
             method: "POST",
@@ -148,8 +148,8 @@ export function FormSignIn() {
                     Ainda não tem conta? <span className="sr-only">Use o botão ao lado para entrar</span>
                 </p>
                 <Link
-                    href="/login"
-                    className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900/30"
+                    href="/signup"
+                    className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900/30 cursor-pointer"
                 >
                     Cadastrar
                 </Link>

@@ -3,8 +3,8 @@ import { z } from "zod";
 export const taskCreateSchema = z.object({
   title: z.string().min(1, "Título é obrigatório").max(200, "Título deve ter no máximo 200 caracteres"),
   description: z.string().max(1000, "Descrição deve ter no máximo 1000 caracteres").optional(),
-  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).default('MEDIUM'),
-  status: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']).default('PENDING'),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']),
+  status: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']),
   due_date: z.string().optional(),
 });
 

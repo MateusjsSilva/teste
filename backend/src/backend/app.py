@@ -16,9 +16,7 @@ app = FastAPI(
 app.include_router(auth)
 app.include_router(tasks)
 
-origins = [
-    'http://localhost:3000',
-]
+origins = ["*"]
 
 # Adicionar o middleware CORS
 app.add_middleware(
